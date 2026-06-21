@@ -1,0 +1,229 @@
+/* Global Styles */
+body {
+    background: url('src/room.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #141414; /* Fallback */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #fff;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Glassmorphism Card */
+.card {
+    background: rgba(255, 255, 255, 0.95); /* More opaque white for better contrast */
+    border: none;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto; /* Center card */
+}
+
+.hero-text {
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Stream Selection */
+.stream-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Increased gap from 15px to 25px */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.form-check-stream {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.form-check-stream:hover {
+    transform: scale(1.05);
+}
+
+.form-check-input-stream {
+    display: none; /* Hide default radio */
+}
+
+.form-check-stream .form-check-label {
+    cursor: pointer;
+}
+
+.stream-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain; /* Ensure icon fits */
+    border-radius: 12px;
+    padding: 10px; /* Add padding to prevent touching edges */
+    background-color: white; /* White background for all icons */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* Prepare for border */
+    cursor: pointer;
+}
+
+/* Selected Stream State */
+.form-check-input-stream:checked + label .stream-icon {
+    border-color: #0d6efd; /* Blue border when selected */
+    transform: scale(1.2); /* Popup effect only (no translateY) */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+    z-index: 10;
+}
+
+/* Genre Selection - Pills (Chips) Layout */
+.genre-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.form-check-genre {
+    margin: 0;
+    padding: 0;
+}
+
+.form-check-input-genre {
+    display: none; /* Hide default radio */
+}
+
+.form-check-genre .form-check-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    color: #495057;
+    user-select: none;
+    font-size: 0.95rem; /* Readable on mobile */
+}
+
+.form-check-genre:hover .form-check-label {
+    background-color: #e9ecef;
+    transform: translateY(-1px);
+}
+
+/* Selected Genre State */
+.form-check-input-genre:checked + .form-check-label {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Genre unavailable for the selected stream */
+.form-check-genre.genre-disabled .form-check-label {
+    cursor: not-allowed;
+    background-color: #e9ecef;
+    color: #adb5bd;
+    border-color: #dee2e6;
+    box-shadow: none;
+}
+
+.form-check-genre.genre-disabled:hover .form-check-label {
+    background-color: #e9ecef;
+    transform: none;
+}
+
+
+/* Modal Styling */
+.modal-content {
+    background-color: #1f1f1f; /* Dark modal background */
+    color: #fff;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+.modal-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+#moviePoster {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.badge.genre-tag {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: normal;
+    padding: 0.5em 0.8em;
+}
+
+/* Read More Button */
+.read-more-link {
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 576px) {
+    .card {
+        width: 90%; /* More side spacing on mobile */
+        padding: 1.5rem; /* Slightly less padding inside card */
+    }
+
+    .hero-text {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .stream-icon {
+        width: 50px; /* Smaller icons on mobile */
+        height: 50px;
+        padding: 8px;
+    }
+
+    .form-check-genre .form-check-label {
+        padding: 8px 16px; /* Smaller pills */
+        font-size: 0.9rem;
+    }
+}
+
+.read-more-link:hover {
+    color: #ccc;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 576px) {
+    .card {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .stream-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .modal-title {
+        font-size: 1rem;
+    }
+
+    #movieTitle {
+        font-size: 1.75rem; /* Smaller title on mobile */
+    }
+    
+    #moviePoster {
+        max-width: 200px !important; /* Smaller poster on mobile */
+        margin-bottom: 1rem;
+    }
+}
